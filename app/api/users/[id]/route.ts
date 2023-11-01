@@ -16,9 +16,9 @@ export const GET = async (
       where: { id },
       include: { _count: true, blogs: true },
     });
-    return generateSuccessMessage({ ...user }, 200);
+    return generateSuccessMessage({ ...user }, "Success", 200);
   } catch (error) {
-    return generateErrorMessage({ error }, 500);
+    return generateErrorMessage({ error }, "error", 500);
   } finally {
     await prisma.$disconnect();
   }

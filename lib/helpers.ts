@@ -8,15 +8,17 @@ export const connectToDb = async () => {
     throw new Error(err);
   }
 };
-export const generateSuccessMessage = (data: any, status: number) => {
-  return NextResponse.json(
-    { message: "Success", ...data },
-    { status, statusText: "OK" }
-  );
+export const generateSuccessMessage = (
+  data: any,
+  message: string,
+  status: number
+) => {
+  return NextResponse.json({ message, ...data }, { status, statusText: "OK" });
 };
-export const generateErrorMessage = (data: any, status: number) => {
-  NextResponse.json(
-    { message: "Error", ...data },
-    { status, statusText: "ERROR" }
-  );
+export const generateErrorMessage = (
+  data: any,
+  message: string,
+  status: number
+) => {
+  NextResponse.json({ message, ...data }, { status, statusText: "ERROR" });
 };
