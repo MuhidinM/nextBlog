@@ -37,7 +37,7 @@ export const POST = async (req: Request) => {
     return generateSuccessMessage(
       { category },
       "category created successfuly",
-      200
+      201
     );
   } catch (error) {
     return generateErrorMessage({ error }, "Could not create categories", 500);
