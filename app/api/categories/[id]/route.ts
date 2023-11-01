@@ -12,17 +12,17 @@ export const GET = async (
   try {
     const id = params.id;
     await connectToDb();
-    const user = await prisma.user.findFirst({
+    const category = await prisma.category.findFirst({
       where: { id },
       include: { _count: true, blogs: true },
     });
     return generateSuccessMessage(
-      { ...user },
-      `User with id ${id} found successfuly`,
+      { category },
+      `Category with id ${id} found successfuly`,
       200
     );
   } catch (error) {
-    return generateErrorMessage({ error }, `could not get the user`, 500);
+    return generateErrorMessage({ error }, `could not get the category`, 500);
   } finally {
     await prisma.$disconnect();
   }
