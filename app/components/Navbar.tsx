@@ -2,27 +2,33 @@
 import React, { useState } from "react";
 import { ModeToggle } from "@/app/components/ThemeTogle";
 import Link from "next/link";
-import { menuItems } from "@/lib/constants";
+import { authMmenuItems, nonAuthMenuItems } from "@/lib/constants";
 import { Logo } from ".";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const { status } = useSession();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+  const menuItems =
+    status === "authenticated" ? authMmenuItems : nonAuthMenuItems;
+
   return (
     <div>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
           <Logo />
           <div className="flex md:order-2">
-            <button
+            <Link
+              href={"/"}
               type="button"
               className="px-4 py-2 mr-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Log in
-            </button>
+            </Link>
             <div className="ml-4">
               <ModeToggle />
             </div>
