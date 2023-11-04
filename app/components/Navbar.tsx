@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { ModeToggle } from "@/app/components/ThemeTogle";
 import Link from "next/link";
 import { menuItems } from "@/lib/constants";
-import { Logo, Search } from ".";
+import { Logo } from ".";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,7 +19,7 @@ const Navbar = () => {
           <div className="flex md:order-2">
             <button
               type="button"
-              className="px-4 py-2 ml-4 mr-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              className="px-4 py-2 mr-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Log in
             </button>
@@ -30,7 +30,7 @@ const Navbar = () => {
             <button
               data-collapse-toggle="navbar-search"
               type="button"
-              className="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className="inline-flex items-center justify-center w-10 h-10 p-2 ml-4 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               aria-controls="navbar-search"
               onClick={toggleMobileMenu}
             >
