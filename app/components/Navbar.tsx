@@ -5,7 +5,13 @@ import Link from "next/link";
 import { authMmenuItems, nonAuthMenuItems } from "@/lib/constants";
 import { Logo } from ".";
 import { useSession } from "next-auth/react";
-
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 const Navbar = () => {
   const { status } = useSession();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -13,6 +19,7 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
   const menuItems =
     status === "authenticated" ? authMmenuItems : nonAuthMenuItems;
 
@@ -22,21 +29,38 @@ const Navbar = () => {
         <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
           <Logo />
           <div className="flex md:order-2">
-            <Link
-              href={"/"}
-              type="button"
-              className="px-4 py-2 mr-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Log in
-            </Link>
-            <div className="ml-4">
+            <div className="mr-4">
               <ModeToggle />
             </div>
+            {status === "authenticated" ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <Link href={"/profile"}>
+                    <DropdownMenuItem>Profile</DropdownMenuItem>
+                  </Link>
+                  <DropdownMenuItem>Sign Out</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                href={"/"}
+                type="button"
+                className="px-4 py-2 mr-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                Log in
+              </Link>
+            )}
 
             <button
               data-collapse-toggle="navbar-search"
               type="button"
-              className="inline-flex items-center justify-center w-10 h-10 p-2 ml-4 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              className={`inline-flex items-center justify-center w-10 h-10 p-2 ml-4 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600`}
               aria-controls="navbar-search"
               onClick={toggleMobileMenu}
             >

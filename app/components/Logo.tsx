@@ -4,7 +4,7 @@ import React from "react";
 const Logo = () => {
   return (
     <div>
-      <Link href="" className="flex items-center">
+      <Link href="/" className="flex items-center">
         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
           Blog App
         </span>

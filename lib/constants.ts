@@ -1,10 +1,9 @@
 import { MenuItem } from "./types";
 
 export const authMmenuItems: MenuItem[] = [
-  { title: "Home", url: "/" },
-  { title: "About", url: "/about" },
-  { title: "Services", url: "/services" },
-  { title: "Contact", url: "/contact" },
+  { title: "Blogs", url: "/blog" },
+  { title: "Write", url: "/blog/add" },
+  { title: "Search", url: "/search" },
 ];
 export const nonAuthMenuItems: MenuItem[] = [
   { title: "Home", url: "/" },
