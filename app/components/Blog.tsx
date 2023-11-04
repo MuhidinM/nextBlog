@@ -1,3 +1,4 @@
+import { getAllBlogs } from "@/lib/helpers";
 import Image from "next/image";
 import { BiLike, BiComment } from "react-icons/bi";
 
@@ -13,9 +14,7 @@ interface BlogPost {
   locations: string;
 }
 export const Blog = async () => {
-  const response = await fetch("http://localhost:3000/api/blog");
-  const data = await response.json();
-  const blogPosts = data.blogs;
+  const blogPosts = await getAllBlogs(6);
   // console.log(blogPosts);
   return (
     <div className="grid gap-5 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
@@ -47,7 +46,7 @@ export const Blog = async () => {
               </p>
             </a>
             <p className="mb-4 text-gray-700 dark:text-gray-400">
-              {blog.description}
+              {blog.description.slice(0, 50) + " ..."}
             </p>
             <div className="flex space-x-4">
               <a

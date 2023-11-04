@@ -22,3 +22,14 @@ export const generateErrorMessage = (
 ) => {
   NextResponse.json({ message, ...data }, { status, statusText: "ERROR" });
 };
+
+export const getAllBlogs = async (count?: number) => {
+  const response = await fetch("http://localhost:3000/api/blog", {
+    cache: "no-store",
+  });
+  const data = await response.json();
+  if (count) {
+    return data.blogs.slice(0, count);
+  }
+  return data.blogs;
+};

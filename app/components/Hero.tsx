@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <section className="mb-4 bg-white dark:bg-gray-900">
+    <section className="bg-white dark:bg-gray-900">
       <div className="items-center max-w-screen-xl gap-8 px-4 py-8 mx-auto xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
         <img
           className="w-full dark:hidden"
