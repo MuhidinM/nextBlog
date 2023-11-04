@@ -9,6 +9,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
@@ -41,6 +43,8 @@ const Navbar = () => {
                   </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                  <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
                   <Link href={"/profile"}>
                     <DropdownMenuItem>Profile</DropdownMenuItem>
                   </Link>
